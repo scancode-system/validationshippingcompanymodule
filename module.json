@@ -1,0 +1,13 @@
+{
+    "name": "ValidationShippingCompany",
+    "alias": "validationshippingcompany",
+    "description": "",
+    "keywords": [],
+    "order": 0,
+    "providers": [
+        "Modules\\ValidationShippingCompany\\Providers\\ValidationShippingCompanyServiceProvider"
+    ],
+    "aliases": {},
+    "files": [],
+    "requires": []
+}

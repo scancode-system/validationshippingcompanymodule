@@ -1,0 +1,26 @@
+{
+    "name": "scancode/validation-shipping-company-module",
+    "description": "",
+    "authors": [
+        {
+            "name": "Nicolas Widart",
+            "email": "n.widart@gmail.com"
+        }
+    ],
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Modules\\ValidationShippingCompany\\Providers\\ValidationShippingCompanyServiceProvider"
+            ],
+            "aliases": {
+
+            }
+        }
+    },
+    "autoload": {
+        "psr-4": {
+            "Modules\\ValidationShippingCompany\\": ""
+        }
+    },
+    "type": "laravel-module"
+}
