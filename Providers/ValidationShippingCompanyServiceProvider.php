@@ -36,11 +36,18 @@ class ValidationShippingCompanyServiceProvider extends ServiceProvider
     protected function registerConfig()
     {
         $this->publishes([
+            __DIR__.'/../Config/config.php' => config_path('validationshippingcompany.php'),
+        ], 'config');
+        $this->mergeConfigFrom(
+            __DIR__.'/../Config/config.php', 'validationshippingcompany'
+        );
+
+/*        $this->publishes([
             module_path('ValidationShippingCompany', 'Config/config.php') => config_path('validationshippingcompany.php'),
         ], 'config');
         $this->mergeConfigFrom(
             module_path('ValidationShippingCompany', 'Config/config.php'), 'validationshippingcompany'
-        );
+        );*/
     }
 
     /**
