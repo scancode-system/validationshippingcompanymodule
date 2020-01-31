@@ -15,7 +15,8 @@ class ValidationShippingCompanyServiceProvider extends ServiceProvider
     public function boot()
     {
         $this->registerConfig();
-        $this->loadMigrationsFrom(module_path('ValidationShippingCompany', 'Database/Migrations'));
+        //$this->loadMigrationsFrom(module_path('ValidationShippingCompany', 'Database/Migrations'));
+        $this->loadMigrationsFrom(__DIR__ . '/../Database/Migrations');
     }
 
     /**
