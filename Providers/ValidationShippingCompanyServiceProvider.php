@@ -8,6 +8,16 @@ use Illuminate\Database\Eloquent\Factory;
 class ValidationShippingCompanyServiceProvider extends ServiceProvider
 {
     /**
+     * @var string $moduleName
+     */
+    protected $moduleName = 'ValidationShippingCompany';
+
+    /**
+     * @var string $moduleNameLower
+     */
+    protected $moduleNameLower = 'validationshippingcompany';
+
+    /**
      * Boot the application events.
      *
      * @return void
@@ -37,18 +47,19 @@ class ValidationShippingCompanyServiceProvider extends ServiceProvider
     protected function registerConfig()
     {
         $this->publishes([
+            module_path($this->moduleName, 'Config/config.php') => config_path($this->moduleNameLower . '.php'),
+        ], 'config');
+        $this->mergeConfigFrom(
+            module_path($this->moduleName, 'Config/config.php'), $this->moduleNameLower
+        );
+
+        /*$this->publishes([
             __DIR__.'/../Config/config.php' => config_path('validationshippingcompany.php'),
         ], 'config');
         $this->mergeConfigFrom(
             __DIR__.'/../Config/config.php', 'validationshippingcompany'
-        );
-
-/*        $this->publishes([
-            module_path('ValidationShippingCompany', 'Config/config.php') => config_path('validationshippingcompany.php'),
-        ], 'config');
-        $this->mergeConfigFrom(
-            module_path('ValidationShippingCompany', 'Config/config.php'), 'validationshippingcompany'
         );*/
+
     }
 
     /**
@@ -59,5 +70,16 @@ class ValidationShippingCompanyServiceProvider extends ServiceProvider
     public function provides()
     {
         return [];
+    }
+
+    private function getPublishableViewPaths(): array
+    {
+        $paths = [];
+        foreach (\Config::get('view.paths') as $path) {
+            if (is_dir($path . '/modules/' . $this->moduleNameLower)) {
+                $paths[] = $path . '/modules/' . $this->moduleNameLower;
+            }
+        }
+        return $paths;
     }
 }
