@@ -22,7 +22,7 @@ class InfoService extends InfoValidationService
 		return [];
 	}
 
-	public function columnsFormat()
+	public function columnsFormat($header)
 	{
 		return [];
 	}
